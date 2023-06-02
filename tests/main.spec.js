@@ -38,4 +38,10 @@ test('add and verify new email is addedd successfully to user inboxes', async ({
   await expect (mainPage.fraLeftPanel.locator('h6').filter({ hasText: 'Your Inboxes' })).toBeVisible();
   await expect (mainPage.fraLeftPanel.locator('span').filter({ hasText: email })).toHaveCount(1);
   await expect (mainPage.fraLeftPanel.locator('span').filter({ hasText: email })).toBeVisible();
+
+  // Additionally, get the pos of the 2 elements and assert if user email exists under "Your Inboxes"
+  // "Your Inboxes" will have lower value of y-axis as it appear before the user email
+  const posInboxes = await mainPage.fraLeftPanel.locator('h6').filter({ hasText: 'Your Inboxes' }).boundingBox();
+  const postEmail = await mainPage.fraLeftPanel.locator('span').filter({ hasText: email }).boundingBox();
+  expect (posInboxes.y).teLessThan(postEmail.y);
 });
