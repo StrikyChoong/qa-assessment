@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "@cucumber/cucumber": "^9.1.2",
     "playwright": "^1.31.2"
   },
   "devDependencies": {
