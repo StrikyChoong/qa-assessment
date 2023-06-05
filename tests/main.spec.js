@@ -43,5 +43,5 @@ test('add and verify new email is addedd successfully to user inboxes', async ({
   // "Your Inboxes" will have lower value of y-axis as it appear before the user email
   const posInboxes = await mainPage.fraLeftPanel.locator('h6').filter({ hasText: 'Your Inboxes' }).boundingBox();
   const postEmail = await mainPage.fraLeftPanel.locator('span').filter({ hasText: email }).boundingBox();
-  expect (posInboxes.y).teLessThan(postEmail.y);
+  expect (posInboxes.y).toBeLessThan(postEmail.y);
 });
